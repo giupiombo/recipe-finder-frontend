@@ -92,7 +92,7 @@ const RecipeFinder: React.FC = () => {
         </aside>
 
         {/* Right Panel */}
-        <section className="w-full md:w-1/2 p-6 bg-gray-50 md:h-[calc(100vh-4rem)] md:overflow-y-auto">
+        <section className="w-full md:w-1/2 p-6 bg-gray-50 md:h-[90vh] md:overflow-y-auto">
           {/* Tabs for page navigation */}
           <div className="flex gap-4 mb-4">
             {results && (
@@ -142,7 +142,9 @@ const RecipeFinder: React.FC = () => {
 
           {page === 'results' && results && (
             <div>
-              <h2 className="text-xl font-semibold mb-2">Results:</h2>
+              <h2 className="text-xl font-semibold mb-2 text-blue-700">
+                Results:
+              </h2>
               <div
                 className="prose prose-sm mb-4"
                 dangerouslySetInnerHTML={{
@@ -162,7 +164,9 @@ const RecipeFinder: React.FC = () => {
 
           {page === 'steps' && recipeSteps && (
             <div>
-              <h2 className="text-xl font-semibold mb-2">Recipe Steps:</h2>
+              <h2 className="text-xl font-semibold mb-2 text-green-600">
+                Recipe Steps:
+              </h2>
               <div
                 className="prose prose-sm"
                 dangerouslySetInnerHTML={{
@@ -175,15 +179,11 @@ const RecipeFinder: React.FC = () => {
               <div className="flex gap-2 mt-4">
                 <button
                   onClick={() => {
-                    if (drinkRecommendations) {
-                      setPage('drinks');
-                    } else {
-                      handleGetDrinks(chosenRecipe);
-                    }
+                    handleGetDrinks(chosenRecipe);
                   }}
                   className="bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 px-4 rounded-md"
                 >
-                  🍷 Get Drink Recommendations
+                  {loading ? 'Fetching...' : '🍷 Get Drink Recommendations'}
                 </button>
               </div>
             </div>
