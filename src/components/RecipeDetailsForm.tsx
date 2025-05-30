@@ -29,7 +29,7 @@ const RecipeDetailsForm: React.FC<Props> = ({
         value={chosenRecipe}
         onChange={(e) => onChosenRecipeChange(e.target.value)}
         className="w-full border border-gray-300 rounded-md p-2"
-        placeholder="e.g., Pasta alla Norma"
+        placeholder="e.g., 1 or Pasta alla Norma"
       />
       <button
         type="submit"

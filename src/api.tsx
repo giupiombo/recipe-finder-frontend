@@ -18,13 +18,15 @@ export async function searchRecipes(
   language: string,
   ingredients: string,
   dietary_restrictions: string,
-  culinary: string
+  culinary: string,
+  tools: string
 ) {
   const response = await api.post('/search-recipes', {
     language,
     ingredients,
     dietary_restrictions,
     culinary,
+    tools,
   });
   return response.data.result;
 }

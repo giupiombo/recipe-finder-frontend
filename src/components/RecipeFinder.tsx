@@ -7,6 +7,7 @@ const RecipeFinder: React.FC = () => {
   const [ingredients, setIngredients] = useState('');
   const [dietaryRestrictions, setDietaryRestrictions] = useState('');
   const [culinary, setCulinary] = useState('');
+  const [tools, setTools] = useState('');
   const [results, setResults] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [recipeSteps, setRecipeSteps] = useState<string | null>(null);
@@ -26,7 +27,8 @@ const RecipeFinder: React.FC = () => {
         'en',
         ingredients,
         dietaryRestrictions,
-        culinary
+        culinary,
+        tools
       );
       setResults(res);
       setPage('results');
@@ -35,6 +37,7 @@ const RecipeFinder: React.FC = () => {
       setResults('Failed to fetch recipes.');
     } finally {
       setLoading(false);
+      setChosenRecipe('');
     }
   };
 
@@ -83,9 +86,11 @@ const RecipeFinder: React.FC = () => {
             ingredients={ingredients}
             dietaryRestrictions={dietaryRestrictions}
             culinary={culinary}
+            tools={tools}
             onIngredientsChange={setIngredients}
             onDietaryRestrictionsChange={setDietaryRestrictions}
             onCulinaryChange={setCulinary}
+            onToolsChange={setTools}
             onSearch={handleSearch}
             loading={loading}
           />

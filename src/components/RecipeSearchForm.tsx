@@ -4,9 +4,11 @@ type Props = {
   ingredients: string;
   dietaryRestrictions: string;
   culinary: string;
+  tools: string;
   onIngredientsChange: (value: string) => void;
   onDietaryRestrictionsChange: (value: string) => void;
   onCulinaryChange: (value: string) => void;
+  onToolsChange: (value: string) => void;
   onSearch: () => void;
   loading: boolean;
 };
@@ -15,9 +17,11 @@ const RecipeSearchForm: React.FC<Props> = ({
   ingredients,
   dietaryRestrictions,
   culinary,
+  tools,
   onIngredientsChange,
   onDietaryRestrictionsChange,
   onCulinaryChange,
+  onToolsChange,
   onSearch,
   loading,
 }) => {
@@ -63,6 +67,17 @@ const RecipeSearchForm: React.FC<Props> = ({
           onChange={(e) => onCulinaryChange(e.target.value)}
           className="mt-1 w-full border border-gray-300 rounded-md p-2"
           placeholder="e.g., Italian, Indian"
+        />
+      </div>
+
+      <div>
+        <label className="block font-medium text-gray-700">Tools</label>
+        <input
+          type="text"
+          value={tools}
+          onChange={(e) => onToolsChange(e.target.value)}
+          className="mt-1 w-full border border-gray-300 rounded-md p-2"
+          placeholder="e.g., Air Fryer, Instant Pot"
         />
       </div>
 
