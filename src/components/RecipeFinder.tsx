@@ -80,16 +80,16 @@ const RecipeFinder: React.FC = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col">
+    <div className="md:h-screen flex flex-col bg-gradient-to-br from-blue-100 via-pink-50 to-purple-100 md:overflow-hidden">
       {/* Title */}
-      <header className="py-4 text-center bg-white z-10">
+      <header className="py-8 text-center z-10">
         <h1 className="text-3xl font-bold text-blue-600">🍽️ Recipe Finder</h1>
       </header>
 
       {/* Content */}
       <main className="flex-1 flex flex-col md:flex-row max-w-7xl mx-auto w-full">
         {/* Left Panel */}
-        <aside className="w-full md:w-1/2 p-6 bg-white">
+        <aside className="w-full md:w-1/2 px-6 pb-6">
           <RecipeSearchForm
             ingredients={ingredients}
             dietaryRestrictions={dietaryRestrictions}
@@ -105,7 +105,7 @@ const RecipeFinder: React.FC = () => {
         </aside>
 
         {/* Right Panel */}
-        <section className="w-full md:w-1/2 p-6 bg-gray-50 md:h-[90vh] md:overflow-y-auto">
+        <section className="w-full md:w-1/2 p-6 bg-white/50 md:bg-white/70 backdrop-blur-md rounded-md md:rounded-2xl md:h-[90vh] md:overflow-y-auto">
           {/* Tabs for page navigation */}
           <div className="flex gap-4 mb-4">
             {results && (
