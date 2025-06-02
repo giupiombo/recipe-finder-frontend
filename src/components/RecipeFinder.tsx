@@ -105,7 +105,7 @@ const RecipeFinder: React.FC = () => {
         </aside>
 
         {/* Right Panel */}
-        <section className="w-full md:w-1/2 p-6 bg-white/50 md:bg-white/70 backdrop-blur-md rounded-md md:rounded-2xl md:h-[90vh] md:overflow-y-auto">
+        <section className="w-full md:w-1/2 p-6 bg-white/50 md:bg-white/70 backdrop-blur-md rounded-md md:rounded-2xl min-h-[30vh] md:h-[90vh] md:overflow-y-auto">
           {/* Tabs for page navigation */}
           <div className="flex gap-4 mb-4">
             {results && (
