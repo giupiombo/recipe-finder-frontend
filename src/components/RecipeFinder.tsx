@@ -80,7 +80,7 @@ const RecipeFinder: React.FC = () => {
   };
 
   return (
-    <div className="md:h-screen flex flex-col bg-gradient-to-br from-blue-100 via-pink-50 to-purple-100 md:overflow-hidden">
+    <div className="md:h-screen flex flex-col md:overflow-hidden">
       {/* Title */}
       <header className="py-8 text-center z-10">
         <h1 className="text-3xl font-bold text-blue-600">🍽️ Recipe Finder</h1>
