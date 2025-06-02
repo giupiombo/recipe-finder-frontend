@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { searchRecipes, getRecipe, getDrinkRecommendations } from '../api';
 import RecipeSearchForm from './RecipeSearchForm';
 import RecipeDetailsForm from './RecipeDetailsForm';
+import FullScreenLoader from './FullScreenLoader';
 
 const RecipeFinder: React.FC = () => {
   const [ingredients, setIngredients] = useState('');
@@ -10,6 +11,10 @@ const RecipeFinder: React.FC = () => {
   const [tools, setTools] = useState('');
   const [results, setResults] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [loadingType, setLoadingType] = useState<
+    'search' | 'steps' | 'drinks' | null
+  >(null);
+
   const [recipeSteps, setRecipeSteps] = useState<string | null>(null);
   const [drinkRecommendations, setDrinkRecommendations] = useState<
     string | null
@@ -18,6 +23,7 @@ const RecipeFinder: React.FC = () => {
   const [page, setPage] = useState<'results' | 'steps' | 'drinks' | null>(null);
 
   const handleSearch = async () => {
+    setLoadingType('search');
     setLoading(true);
     setRecipeSteps(null);
     setDrinkRecommendations(null);
@@ -43,6 +49,7 @@ const RecipeFinder: React.FC = () => {
 
   const handleGetRecipe = async (recipe: string) => {
     if (!results) return;
+    setLoadingType('steps');
     setLoading(true);
     try {
       const res = await getRecipe('en', recipe, results);
@@ -58,6 +65,7 @@ const RecipeFinder: React.FC = () => {
 
   const handleGetDrinks = async (recipe: string) => {
     if (!results) return;
+    setLoadingType('drinks');
     setLoading(true);
     try {
       const res = await getDrinkRecommendations('en', recipe, results);
@@ -211,6 +219,7 @@ const RecipeFinder: React.FC = () => {
           )}
         </section>
       </main>
+      {loading && loadingType && <FullScreenLoader type={loadingType} />}
     </div>
   );
 };
