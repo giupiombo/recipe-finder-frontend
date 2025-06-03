@@ -83,7 +83,9 @@ const RecipeFinder: React.FC = () => {
     <div className="md:h-screen flex flex-col md:overflow-hidden">
       {/* Title */}
       <header className="py-8 text-center z-10">
-        <h1 className="text-3xl font-bold text-blue-600">🍽️ Recipe Finder</h1>
+        <h1 className="text-3xl font-bold text-blue-600 tracking-wide">
+          🍽️ Recipe Finder
+        </h1>
       </header>
 
       {/* Content */}
@@ -105,7 +107,7 @@ const RecipeFinder: React.FC = () => {
         </aside>
 
         {/* Right Panel */}
-        <section className="w-full md:w-1/2 p-6 bg-white/50 md:bg-white/70 backdrop-blur-md rounded-md md:rounded-2xl min-h-[20vh] md:h-[90vh] md:overflow-y-auto">
+        <section className="w-full md:w-1/2 p-6 bg-white/50 md:bg-white/70 backdrop-blur-md rounded-md md:rounded-2xl min-h-[20vh] md:h-[80vh] md:overflow-y-auto">
           {/* Tabs for page navigation */}
           <div className="flex gap-4 mb-4">
             {results && (
@@ -117,7 +119,7 @@ const RecipeFinder: React.FC = () => {
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
-                Results
+                💡 Ideas
               </button>
             )}
             {recipeSteps && (
@@ -129,7 +131,7 @@ const RecipeFinder: React.FC = () => {
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
-                Steps
+                📋 Steps
               </button>
             )}
             {drinkRecommendations && (
@@ -141,7 +143,7 @@ const RecipeFinder: React.FC = () => {
                     : 'bg-gray-200 text-gray-700'
                 }`}
               >
-                Drinks
+                🍷 Drinks
               </button>
             )}
           </div>
@@ -155,9 +157,6 @@ const RecipeFinder: React.FC = () => {
 
           {page === 'results' && results && (
             <div>
-              <h2 className="text-xl font-semibold mb-2 text-blue-700">
-                Results:
-              </h2>
               <div
                 className="prose prose-sm mb-4"
                 dangerouslySetInnerHTML={{
@@ -177,9 +176,6 @@ const RecipeFinder: React.FC = () => {
 
           {page === 'steps' && recipeSteps && (
             <div>
-              <h2 className="text-xl font-semibold mb-2 text-green-600">
-                Recipe Steps:
-              </h2>
               <div
                 className="prose prose-sm"
                 dangerouslySetInnerHTML={{
@@ -204,9 +200,6 @@ const RecipeFinder: React.FC = () => {
 
           {page === 'drinks' && drinkRecommendations && (
             <div>
-              <h2 className="text-xl font-semibold mb-2 text-purple-800">
-                Drink Recommendations:
-              </h2>
               <div
                 className="prose prose-sm"
                 dangerouslySetInnerHTML={{
@@ -219,6 +212,9 @@ const RecipeFinder: React.FC = () => {
           )}
         </section>
       </main>
+      <p className="text-sm my-6 tracking-wider text-center">
+        © Copyright {new Date().getFullYear()}. Made by Giulia Piombo.
+      </p>
       {loading && loadingType && <FullScreenLoader type={loadingType} />}
     </div>
   );

@@ -66,7 +66,7 @@ const RecipeSearchForm: React.FC<Props> = ({
           value={culinary}
           onChange={(e) => onCulinaryChange(e.target.value)}
           className="mt-1 w-full border border-gray-300 rounded-md p-2"
-          placeholder="e.g., Italian, Indian"
+          placeholder="e.g., italian, indian"
         />
       </div>
 
@@ -77,7 +77,7 @@ const RecipeSearchForm: React.FC<Props> = ({
           value={tools}
           onChange={(e) => onToolsChange(e.target.value)}
           className="mt-1 w-full border border-gray-300 rounded-md p-2"
-          placeholder="e.g., Air Fryer, Instant Pot"
+          placeholder="e.g., air fryer, instant pot"
         />
       </div>
 
