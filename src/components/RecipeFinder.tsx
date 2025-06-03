@@ -3,6 +3,7 @@ import { searchRecipes, getRecipe, getDrinkRecommendations } from '../api';
 import RecipeSearchForm from './RecipeSearchForm';
 import RecipeDetailsForm from './RecipeDetailsForm';
 import FullScreenLoader from './FullScreenLoader';
+import ReviewSection from './ReviewSection';
 
 const RecipeFinder: React.FC = () => {
   const [ingredients, setIngredients] = useState('');
@@ -19,14 +20,19 @@ const RecipeFinder: React.FC = () => {
   const [drinkRecommendations, setDrinkRecommendations] = useState<
     string | null
   >(null);
+  const [review, setReview] = useState<string | null>(null);
   const [chosenRecipe, setChosenRecipe] = useState('');
-  const [page, setPage] = useState<'results' | 'steps' | 'drinks' | null>(null);
+  const [page, setPage] = useState<
+    'results' | 'steps' | 'drinks' | 'review' | null
+  >(null);
+  const [reviewCompleted, setReviewCompleted] = useState(false);
 
   const handleSearch = async () => {
     setLoadingType('search');
     setLoading(true);
     setRecipeSteps(null);
     setDrinkRecommendations(null);
+    setReview(null);
     setPage(null);
     try {
       const res = await searchRecipes(
@@ -77,6 +83,11 @@ const RecipeFinder: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleFinish = () => {
+    setPage('review');
+    setReview('review');
   };
 
   return (
@@ -146,6 +157,18 @@ const RecipeFinder: React.FC = () => {
                 🍷 Drinks
               </button>
             )}
+            {review && (
+              <button
+                onClick={() => setPage('review')}
+                className={`px-3 py-1 rounded-md text-sm font-medium ${
+                  page === 'review'
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-200 text-gray-700'
+                }`}
+              >
+                ⭐️ Review
+              </button>
+            )}
           </div>
 
           {/* Dynamic content based on page */}
@@ -208,7 +231,22 @@ const RecipeFinder: React.FC = () => {
                     .replace(/\n/g, '<br />'),
                 }}
               />
+              <div className="flex gap-2 mt-4">
+                <button
+                  onClick={handleFinish}
+                  className="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-md"
+                >
+                  Finish
+                </button>
+              </div>
             </div>
+          )}
+
+          {page === 'review' && review && (
+            <ReviewSection
+              reviewCompleted={reviewCompleted}
+              setReviewCompleted={setReviewCompleted}
+            />
           )}
         </section>
       </main>
