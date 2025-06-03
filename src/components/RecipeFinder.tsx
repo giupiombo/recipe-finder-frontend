@@ -251,7 +251,7 @@ const RecipeFinder: React.FC = () => {
         </section>
       </main>
       <p className="text-sm my-6 tracking-wider text-center">
-        © Copyright {new Date().getFullYear()}. Made by Giulia Piombo.
+        © Copyright {new Date().getFullYear()}. Made with 🩷 by Giulia Piombo.
       </p>
       {loading && loadingType && <FullScreenLoader type={loadingType} />}
     </div>
