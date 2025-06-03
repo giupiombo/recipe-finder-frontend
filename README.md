@@ -1,54 +1,74 @@
-# React + TypeScript + Vite
+<div align=center>
+    <img src="./recipe-finder.jpg" alt="Recipe Finder" width="30%" height="30%" />
+    <hr>
+</div>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Recipe Finder with GenAI Frontend
 
-Currently, two official plugins are available:
+This is the **frontend** of the Recipe Finder application. It enables users to discover recipes and drink pairings intelligently based on their inputs.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 💻 Tech Stack
 
-## Expanding the ESLint configuration
+- **Framework:** React + TypeScript
+- **Styling:** Tailwind CSS
+- **Hosting:** Vercel
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## ✨ Features
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+- **🔍 Smart Recipe Search** – Search recipes based on ingredients, dietary needs, culinary, and tools you have.
+- **📋 Step-by-Step Instructions** – View detailed instructions for each recipe.
+- **🍷 Drink Pairings** – Get matching drink suggestions for the selected dish.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## 💭 How it works
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+This frontend connects with the [Recipe Finder Backend](https://github.com/giupiombo/recipe-finder-backend/blob/main/README.md), which uses AI to generate recipe content and recommendations.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## 🚀 Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (v18+ recommended)
+- npm
+
+### Installation
+
+1.  **Clone the repository:**
+
+    ```bash
+    git clone https://github.com/giupiombo/recipe-finder-frontend.git
+    cd recipe-finder-frontend
+    ```
+
+2.  **Install dependencies:**
+
+    ```bash
+    npm install
+    ```
+
+3.  **Set up your API URL:**
+    Create a file named `.env` in the root directory of your project (where `main.py` is located) and add your API URL:
+    ```dotenv
+    VITE_API_URL="YOUR_ACTUAL_VITE_API_URL_HERE"
+    ```
+    **Important:** Replace `"YOUR_ACTUAL_VITE_API_URL_HERE"` with your actual API URL. Do not commit this file to public repositories.
+
+### Running the API
+
+1.  **Start the application locally:**
+
+    ```bash
+    npm run dev
+    ```
+
+2.  **Access the local endpoint:**
+    Open your web browser and navigate to `http://localhost:5173//`.
+
+### 🌐 Live Deployment
+
+This application is deployed and hosted on **Vercel**. You can check out the live application here:
+
+- **Live Application:** [https://recipe-finder-genai.vercel.app/](https://recipe-finder-genai.vercel.app/)
